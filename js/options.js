@@ -7,6 +7,7 @@ let set, optionsList, tabs
 let optionsData = []
 initTab()
 bindTabClick()
+getOptions()
 bindDelOptions()
 bindAddOptions()
 initOptionsListDom()
