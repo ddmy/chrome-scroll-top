@@ -69,9 +69,18 @@ a {
   display: none;
 }
 .btn-styl p {
-  color: #999;
-  text-align: center;
+  margin: 10px 0;
 }
+.btn-styl p span {
+  display: inline-block;
+  width: 100px;
+}
+.btn-styl p input {
+  width: 200px;
+  font-size: 12px;
+}
+
+
 @keyframes show {
   0% {
     opacity: 0;
