@@ -3,7 +3,7 @@ let sub = document.querySelector('.sub')
 let reg = document.querySelector('#reg')
 console.log('options-js加载成功')
 
-let set, optionsList, tabs
+let set, optionsList, btnSet, tabs
 let optionsData = []
 initTab()
 bindTabClick()
@@ -17,6 +17,7 @@ initOptionsListDom()
 function initTab () {
   set = document.querySelector('.setting')
   optionsList = document.querySelector('.options-list')
+  btnSet = document.querySelector('.btn-styl')
   tabs = document.querySelectorAll('.table a')
 }
 // 绑定添加规则事件
@@ -35,12 +36,12 @@ function bindAddOptions () {
       optionsData.push(value)
       // 保存数据
       chrome.storage.sync.set({'to-top': JSON.stringify(optionsData)}, function() {
-          console.log('设置保存成功！')
+          msg('添加成功', 'success')
           initOptionsListDom()
           ipt.value = ''
       })
     } else {
-      console.warn('不能为空')
+      msg('不能为空')
     }
   })
 }
@@ -53,13 +54,17 @@ function bindTabClick () {
 }
 // tab 点击事件
 function tabClick () {
-  [...tabs].forEach((item, index) => {
+  let clickIndex = this.dataset.index
+  // table内容
+  let tabInnerArr = [set, optionsList, btnSet]
+  tabInnerArr.forEach(v => v.style.display = 'none')
+  ;[...tabs].forEach(item => {
     item.className = ''
     if (item === this) {
       item.className = 'active'
-      set.style.display = index === 0 ? 'block' : 'none'
-      optionsList.style.display = index === 1 ? 'block' : 'none'
     }
+    tabInnerArr[clickIndex].style.display = 'block'
+
   })
   initOptionsListDom()
 }
@@ -82,7 +87,7 @@ function initOptionsListDom () {
     if (type === '[object String]') {
       return `<p>${indexStr}  ${v}    <a href="javascript:;" data-index="${i}">删除</a></p>`
     } else if (type === '[object Object]' && v.type === 'reg') {
-      return `<p>${indexStr}  ${v.type}: ${v.value}    <a href="javascript:;" data-index="${i}">删除</a></p>`
+      return `<p>${indexStr}  正则: ${v.value}    <a href="javascript:;" data-index="${i}">删除</a></p>`
     }
   }).join('')
   str = `<h1>配置列表</h1>${str}`
@@ -98,9 +103,22 @@ function bindDelOptions () {
       parent.parentNode.removeChild(parent)
       optionsData.splice(index, 1)
       chrome.storage.sync.set({'to-top': JSON.stringify(optionsData)}, function() {
-        console.log('设置保存成功！')
+        msg('删除成功!', 'success')
         initOptionsListDom()
       })
     }
   })
+}
+// 文字提示
+function msg(str = '测试消息', type = 'fail') {
+  let msgDom = document.querySelector('.msg-box')
+  if (msgDom) {
+    msgDom.parentNode.removeChild(msgDom)
+  }
+  let bgColor = type === 'fail' ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.8)'
+  let div = document.createElement('div')
+  div.className = 'msg-box'
+  div.innerText = str
+  div.style.cssText = `width: 200px; line-height: 30px; padding: 4px 10px;font-size: 12px; text-align: center; color: #fff; background-color: ${bgColor}; position: fixed; top: 80px; left: 50%; transform: translateX(-50%); opacity: 0; animation: show 2s; border-radius: 10px;`
+  document.body.appendChild(div)
 }

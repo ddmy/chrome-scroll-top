@@ -7,6 +7,9 @@ body {
   color: #333;
   width: 500px;
   height: 500px;
+  font-size: 14px;
+  user-select: none;
+  overflow: hidden;
 }
 a {
   text-decoration: none;
@@ -15,14 +18,14 @@ a {
   display: flex;
 }
 .table a {
-  width: 80px;
+  padding: 0 10px;
   height: 40px;
   color: #fff;
   background-color: #369;
   line-height: 40px;
   text-align: center;
   font-size: 14px;
-  margin-right: 10px;
+  margin-left: 10px;
   margin-bottom: 20px;
 }
 .table a.active {
@@ -42,12 +45,13 @@ a {
   color: #666;
   font-size: 12px;
 }
-.setting h1, .options-list h1 {
+.setting h1, .options-list h1, .btn-styl h1{
   margin-bottom: 20px;
 }
+
 .options-list {
   display: none;
-  max-height: 500px;
+  max-height: 400px;
   overflow-y: auto;
 }
 .options-list p {
@@ -59,4 +63,26 @@ a {
   color: #fff;
   border-radius: 8px;
   margin-right: 10px;
+}
+
+.btn-styl {
+  display: none;
+}
+.btn-styl p {
+  color: #999;
+  text-align: center;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
