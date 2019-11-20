@@ -29,6 +29,7 @@ function bindAddOptions () {
           type: 'reg',
           value: value
         }
+        reg.checked = false
       }
       optionsData.push(value)
       // 保存数据
@@ -66,6 +67,7 @@ function getOptions () {
   // 获取当前的本地配置信息
   chrome.storage.sync.get({'to-top': '[]'}, function(items) {
     optionsData = JSON.parse(items['to-top'])
+    console.log('getOptions当前配置', optionsData)
     // 初始化新的列表
     initOptionsListDom()
   }) 
@@ -77,9 +79,9 @@ function initOptionsListDom () {
     let type = Object.prototype.toString.call(v)
     let indexStr = `<span style="font-weight: 500;">${i}:</span>`
     if (type === '[object String]') {
-      return `<p>${indexStr + v}. <a href="javascript:;" data-index="${i}">删除</a></p>`
+      return `<p>${indexStr}  ${v}    <a href="javascript:;" data-index="${i}">删除</a></p>`
     } else if (type === '[object Object]' && v.type === 'reg') {
-      return `<p>${indexStr + v.type}: ${v.value}. <a href="javascript:;" data-index="${i}">删除</a></p>`
+      return `<p>${indexStr}  ${v.type}: ${v.value}    <a href="javascript:;" data-index="${i}">删除</a></p>`
     }
   }).join('')
   str = `<h1>配置列表</h1>${str}`
