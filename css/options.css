@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 14px;
+  color: #333;
+  width: 500px;
+  height: 500px;
+}
+a {
+  text-decoration: none;
+}
+.table {
+  display: flex;
+}
+.table a {
+  width: 80px;
+  height: 40px;
+  color: #fff;
+  background-color: #369;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.table a.active {
+  background-color: #000;
+}
+
+.options-list {
+  display: none;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.options-list p {
+  height: 40px;
+  line-height: 40px;
+}
+.options-list p a {
+  padding: 4px 10px;
+  background-color: red;
+  color: #fff;
+  border-radius: 8px;
+}

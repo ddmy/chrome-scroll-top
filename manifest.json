@@ -1,0 +1,47 @@
+{
+  "manifest_version": 2,
+  "name": "返回顶部",
+  "version": "1.0.0",
+  "description": "页面一键回顶部",
+  "icons":
+  {
+      "16": "img/top.png",
+      "48": "img/top.png",
+      "128": "img/top.png"
+  },
+  "background":
+  {
+    "scripts": ["js/main.js"]
+  },
+  "browser_action": 
+  {
+      "default_icon": "img/top_icon.png",
+      "default_title": "一键直达页面顶部",
+      "default_popup": "popup.html"
+  },
+  "content_scripts": 
+  [
+      {
+          "matches": ["<all_urls>"],
+          "js": ["js/page.js"],
+          "css": [],
+          "run_at": "document_end"
+      }
+  ],
+  "permissions":
+  [
+    "storage"
+  ],
+  "web_accessible_resources": [],
+  "homepage_url": "http://ddamy.com",
+  "chrome_url_overrides": {},
+  "options_page": "options.html",
+  "options_ui":
+  {
+      "page": "options.html",
+      "chrome_style": true
+  },
+  "omnibox": { "keyword" : "go" },
+  "default_locale": "zh_CN",
+  "devtools_page": "devtools.html"
+}
