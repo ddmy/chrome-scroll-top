@@ -10,7 +10,6 @@ let btnSty = {
 chrome.storage.sync.get({'to-top': '[]', btnSty }, function(items) {
   let arr = JSON.parse(items['to-top'])
   btnSty = items.btnSty
-  console.log('page', items)
   creatTop = !!arr.find(v => {
     let type = Object.prototype.toString.call(v)
     if (type === '[object String]') {
@@ -33,6 +32,9 @@ window.addEventListener('load', () => {
   document.body.appendChild(div)
   // 窗口高度
   let clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight
+  if (document.documentElement.scrollTop > clientHeight) {
+    div.style.display = 'block'
+  }
   window.addEventListener('resize', () => {
     clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight
   })
