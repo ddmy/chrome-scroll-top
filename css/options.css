@@ -73,11 +73,12 @@ a {
 }
 .btn-styl p span {
   display: inline-block;
-  width: 100px;
+  width: 130px;
 }
 .btn-styl p input {
   width: 200px;
   font-size: 12px;
+  color: #000;
 }
 
 
