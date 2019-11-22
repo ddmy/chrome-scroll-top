@@ -1,6 +1,16 @@
 let creatTop = false
-chrome.storage.sync.get({'to-top': '[]'}, function(items) {
+let btnSty = {
+  text: '返回顶部',
+  backgroundImage: '',
+  backgroundColor: '#369',
+  borderRadius: '6px',
+  opacity: '0.8',
+  color: '#fff'
+}
+chrome.storage.sync.get({'to-top': '[]', btnSty }, function(items) {
   let arr = JSON.parse(items['to-top'])
+  btnSty = items.btnSty
+  console.log('page', items)
   creatTop = !!arr.find(v => {
     let type = Object.prototype.toString.call(v)
     if (type === '[object String]') {
@@ -13,8 +23,10 @@ chrome.storage.sync.get({'to-top': '[]'}, function(items) {
 window.addEventListener('load', () => {
   if (!creatTop) return false
   let div = document.createElement('div')
-  div.innerHTML = '返回顶部'
-  div.style.cssText = 'width:50px; height: 50px; display:none; background-color: #369; color: #fff; font-size: 12px; line-height: 50px; text-align: center; cursor: pointer; position: fixed; right: 20px; bottom: 100px; z-index: 99999; opacity: 0.8; border-radius: 6px;'
+  div.innerHTML = btnSty.text
+  let css = `width:50px; height: 50px; display:none; background-color: ${btnSty.backgroundColor}; color: ${btnSty.color}; font-size: 12px; line-height: 50px; text-align: center; cursor: pointer; position: fixed; right: 20px; bottom: 100px; z-index: 99999; opacity: ${btnSty.opacity}; border-radius: ${parseInt(btnSty.borderRadius)}px; background-image: url(${btnSty.backgroundImage}); background-repeat: no-repeat; background-size: auto; background-position: center;`
+  console.log(css)
+  div.style.cssText = css
   div.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   })
