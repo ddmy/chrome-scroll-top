@@ -193,6 +193,9 @@ function findOptionsKeys (key, type = 'opt') {
       case 'opacity':
         name = 'opacity'
         break;
+      case 'text-color':
+        name = 'color'
+        break;
       default:
         name = false
         break;
