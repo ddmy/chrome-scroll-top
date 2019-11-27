@@ -138,8 +138,7 @@ function initBtnStylOptions () {
   // 把当前的配置信息填充到inout中做为默认值
   let keys = Object.keys(optionsData.btnSty)
   keys.forEach(v => {
-    let name
-    findOptionsKeys(name, 'opt')
+    let name = findOptionsKeys(v, 'opt')
     if (name) {
       [...btnIpts].forEach(ipt => {
         if (ipt.name === name) {

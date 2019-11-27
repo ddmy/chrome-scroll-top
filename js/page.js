@@ -23,8 +23,7 @@ window.addEventListener('load', () => {
   if (!creatTop) return false
   let div = document.createElement('div')
   div.innerHTML = btnSty.text
-  let css = `width:50px; height: 50px; display:none; background-color: ${btnSty.backgroundColor}; color: ${btnSty.color}; font-size: 12px; line-height: 50px; text-align: center; cursor: pointer; position: fixed; right: 20px; bottom: 100px; z-index: 99999; opacity: ${btnSty.opacity}; border-radius: ${parseInt(btnSty.borderRadius)}px; background-image: url(${btnSty.backgroundImage}); background-repeat: no-repeat; background-size: auto; background-position: center;`
-  console.log(css)
+  let css = `width:50px; height: 50px; display:none; background-color: ${btnSty.backgroundColor}; color: ${btnSty.color}; font-size: 12px; line-height: 50px; text-align: center; cursor: pointer; position: fixed; right: 20px; bottom: 100px; z-index: 99999; opacity: ${btnSty.opacity}; border-radius: ${parseInt(btnSty.borderRadius)}px; background-image: url(${btnSty.backgroundImage}); background-repeat: no-repeat; background-size: cover; background-position: center;`
   div.style.cssText = css
   div.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
