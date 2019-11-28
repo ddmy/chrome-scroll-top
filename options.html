@@ -8,32 +8,34 @@
   <link rel="stylesheet" href="./css/options.css">
 </head>
 <body>
-  <div class="table">
-    <a href="javascript:;" class="active" data-index="0">规则配置</a>
-    <a href="javascript:;" data-index="1">规则应用规则列表</a>
-    <a href="javascript:;" data-index="2">按钮样式</a>
-  </div>
-  <div class="setting">
-    <h1>插件配置页</h1>
-    <p> 规则 <input type="text" id="url"></p>
-    <p class="des">可填入字符串：网站host中如果包含该字符串则启用</p>
-    <p class="des">可填入正则：使用当前url与该正则进行匹配，成功则启用（需要勾选正则）</p>
-    <p></p>正则匹配: <input type="checkbox" name="reg" id="reg"></p>
-    <button class="sub">确认</button>
-  </div>
-  <div class="options-list">
-    <h1>配置列表</h1>
-  </div>
-  <div class="btn-styl">
-    <h1>按钮样式</h1>
-    <p>内容: </p>
-    <p><span>文字(最多四个字):</span> <input type="text" max="4" name="text" placeholder="返回顶部"></p>
-    <p><span>背景图片(仅支持url):</span> <input type="text" name="img" placeholder="background-image"></p>
-    <p><span>背景颜色(css写法):</span> <input type="text" name="color" placeholder="background-color"></p>
-    <p><span>字体颜色(css写法):</span> <input type="text" name="text-color" placeholder="color"></p>
-    <p><span>按钮圆角(单位px):</span> <input type="text" name="radius" placeholder="border-radius"></p>
-    <p><span>按钮透明度(0~1):</span> <input type="text" name="opacity" placeholder="opacity"></p>
-    <button class="btn-sub">确认</button>
+  <div id="app">
+    <div class="table">
+      <a href="javascript:;" class="active" data-index="0">规则配置</a>
+      <a href="javascript:;" data-index="1">规则应用规则列表</a>
+      <a href="javascript:;" data-index="2">按钮样式</a>
+    </div>
+    <div class="setting">
+      <h1>插件配置页</h1>
+      <p> 规则 <input type="text" id="url"></p>
+      <p class="des">可填入字符串：网站host中如果包含该字符串则启用</p>
+      <p class="des">可填入正则：使用当前url与该正则进行匹配，成功则启用（需要勾选正则）</p>
+      <p></p>正则匹配: <input type="checkbox" name="reg" id="reg"></p>
+      <button class="sub">确认</button>
+    </div>
+    <div class="options-list">
+      <h1>配置列表</h1>
+    </div>
+    <div class="btn-styl">
+      <h1>按钮样式</h1>
+      <p>内容: </p>
+      <p><span>文字(最多四个字):</span> <input type="text" max="4" name="text" placeholder="返回顶部"></p>
+      <p><span>背景图片(仅支持url):</span> <input type="text" name="img" placeholder="background-image"></p>
+      <p><span>背景颜色(css写法):</span> <input type="text" name="color" placeholder="background-color"></p>
+      <p><span>字体颜色(css写法):</span> <input type="text" name="text-color" placeholder="color"></p>
+      <p><span>按钮圆角(单位px):</span> <input type="text" name="radius" placeholder="border-radius"></p>
+      <p><span>按钮透明度(0~1):</span> <input type="text" name="opacity" placeholder="opacity"></p>
+      <button class="btn-sub">确认</button>
+    </div>
   </div>
   <script type="text/javascript" charset="utf-8" src="./js/options.js"></script>
 </body>

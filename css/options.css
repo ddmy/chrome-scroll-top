@@ -5,14 +5,17 @@
 body {
   font-size: 14px;
   color: #333;
-  width: 500px;
-  height: 500px;
+  width: 100vw;
   font-size: 14px;
   user-select: none;
   overflow: hidden;
 }
 a {
   text-decoration: none;
+}
+#app {
+  width: 500px;
+  margin: 10px auto 0;
 }
 .table {
   display: flex;
