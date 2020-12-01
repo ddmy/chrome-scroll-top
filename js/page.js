@@ -7,7 +7,7 @@ let btnSty = {
   opacity: '0.8',
   color: '#fff'
 }
-let clientX, clientY, offsetX, offsetY
+let clientX, clientY
 let bottom = 100
 let right = 50
 let btnWidth = 50
@@ -34,10 +34,8 @@ window.addEventListener('load', () => {
   div.addEventListener('mousedown', (event) => {
     clientX = event.clientX
     clientY = event.clientY
-    offsetX = event.offsetX
-    offsetY = event.offsetY
     startTime = Date.now()
-    div.addEventListener('mousemove', btnMouseMove, true)
+    div.addEventListener('mousemove', btnMouseMove)
     div.addEventListener('mouseup', btnDragEnd)
     div.addEventListener('mouseout', btnDragEnd)
   })
@@ -54,7 +52,7 @@ window.addEventListener('load', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
     startTime = 0
-    this.removeEventListener('mousemove', btnMouseMove, true)
+    this.removeEventListener('mousemove', btnMouseMove)
     bottom = parseInt(this.style.bottom)
     right = parseInt(this.style.right)
   }
