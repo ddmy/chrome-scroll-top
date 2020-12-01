@@ -35,9 +35,17 @@ window.addEventListener('load', () => {
     clientX = event.clientX
     clientY = event.clientY
     startTime = Date.now()
-    div.addEventListener('mousemove', btnMouseMove)
-    div.addEventListener('mouseup', btnDragEnd)
-    div.addEventListener('mouseout', btnDragEnd)
+    let body = document.querySelector('body')
+    body.addEventListener('mousemove', btnMouseMove)
+    body.addEventListener('mouseup', function (event) {
+      if (event.type === 'mouseup' && Date.now() - startTime < 300) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+      startTime = 0
+      body.removeEventListener('mousemove', btnMouseMove)
+      bottom = parseInt(div.style.bottom)
+      right = parseInt(div.style.right)
+    })
   })
   // 鼠标拖动
   function btnMouseMove (event) {
@@ -45,16 +53,6 @@ window.addEventListener('load', () => {
     let clientYMove = event.clientY
     div.style.bottom = clientY - clientYMove + bottom + 'px'
     div.style.right = clientX - clientXMove + right + 'px'
-  }
-  // 鼠标拖动结束
-  function btnDragEnd (event) {
-    if (event.type === 'mouseup' && Date.now() - startTime < 300) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-    startTime = 0
-    this.removeEventListener('mousemove', btnMouseMove)
-    bottom = parseInt(this.style.bottom)
-    right = parseInt(this.style.right)
   }
   document.body.appendChild(div)
   // 窗口高度
